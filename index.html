@@ -3,14 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>L'Oréal | Smart Routine &amp; Product Advisor</title>
+    <title>L'Oréal Beauty Assistant</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Adding Helvetica Now Display and Halesworth eText fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Helvetica+Now+Display:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Halesworth+eText:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Fallback fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
       rel="stylesheet"
     />
     <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -19,8 +33,11 @@
     <div class="page-wrapper">
       <!------- Header / Branding ------->
       <header class="site-header">
-        <img src="img/loreal-logo.png" alt="L'Oréal Logo" class="logo" />
-        <h1 class="site-title">Smart Routine &amp; Product Advisor</h1>
+        <img src="img/loreal-logo.png" alt="L'Oréal" class="logo" />
+        <h1 class="site-title">Beauty Assistant</h1>
+        <p class="site-subtitle">
+          💄 Personalized skincare and beauty recommendations
+        </p>
       </header>
 
       <!-- Category Filter -->
@@ -39,6 +56,15 @@
         </select>
       </div>
 
+      <!-- Product Search -->
+      <div class="search-section">
+        <input
+          id="productSearch"
+          type="text"
+          placeholder="Search products by name or keyword..."
+        />
+      </div>
+
       <!-- Products Grid -->
       <div id="productsContainer" class="products-grid"></div>
 
@@ -52,41 +78,61 @@
       </div>
 
       <!------- Chat Area ------->
-      <section class="chatbox">
-        <h2>Let's Build Your Routine</h2>
-        <div id="chatWindow" class="chat-window"></div>
+      <main>
+        <section class="chatbox">
+          <div id="chatWindow" class="chat-window">
+            <!-- messages will be appended here via JS -->
+          </div>
 
-        <form id="chatForm" class="chat-form">
-          <label for="userInput" class="visually-hidden">Message</label>
-          <input
-            id="userInput"
-            name="userInput"
-            type="text"
-            placeholder="Ask me about products or routines…"
-            autocomplete="off"
-            required
-          />
-          <button type="submit" id="sendBtn">
-            <i class="fa-solid fa-paper-plane"></i>
-            <span class="visually-hidden">Send</span>
-          </button>
-        </form>
-      </section>
+          <form id="chatForm" class="chat-form">
+            <label for="userInput" class="visually-hidden">Message</label>
+            <input
+              id="userInput"
+              name="userInput"
+              type="text"
+              placeholder="Ask me about products or routines…"
+              autocomplete="off"
+              required
+            />
+            <button type="submit" id="sendBtn">
+              <span class="material-icons">send</span>
+              <span class="visually-hidden">Send</span>
+            </button>
+          </form>
+        </section>
+      </main>
 
       <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2025 L'Oréal. All rights reserved.</p>
+        <p>
+          &copy; 2025
+          <a href="https://www.loreal.com/en/" target="_blank" rel="noopener"
+            >L'Oréal</a
+          >. All rights reserved.
+        </p>
         <nav>
-          <!-- These URLs are placeholders -->
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Contact</a>
+          <a
+            href="https://www.loreal.com/en/group/global-privacy-policy/"
+            target="_blank"
+            rel="noopener"
+            >Privacy Policy</a
+          >
+          <a
+            href="https://www.loreal.com/en/term-of-use/"
+            target="_blank"
+            rel="noopener"
+            >Terms of Use</a
+          >
+          <a
+            href="https://www.instagram.com/lorealgroupe/"
+            target="_blank"
+            rel="noopener"
+            >Contact</a
+          >
         </nav>
       </footer>
     </div>
 
-    <!-- secrets.js can be removed when using Cloudflare Workers for API requests -->
-    <script src="secrets.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

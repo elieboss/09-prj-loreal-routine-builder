@@ -7,33 +7,57 @@
 
 /* —— body + fonts —— */
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  /* Helvetica Now Display for body text & search fields */
+  font-family: "Helvetica Now Display", "Inter", "Helvetica Neue", "Helvetica",
+    Arial, sans-serif;
   color: #333;
   display: flex;
   justify-content: center;
+  /* Soft beige background closest to white */
+  background-color: #fefcf8;
+  min-height: 100vh;
 }
 
 .page-wrapper {
   width: 90%;
   max-width: 900px;
+  margin: 0 auto;
 }
 
 /* header */
 .site-header {
   text-align: center;
   padding-top: 50px;
-  padding-bottom: 10px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo {
-  width: 250px;
-  margin-bottom: 15px;
+  height: 60px;
+  margin-bottom: 20px;
 }
 
 .site-title {
-  font-size: 22px;
-  font-weight: 500;
+  /* Halesworth eText for menus/headers */
+  font-family: "Halesworth eText", "Montserrat", Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #000;
+  letter-spacing: -0.5px;
+}
+
+.site-subtitle {
+  /* Helvetica Now Display for body text */
+  font-family: "Helvetica Now Display", "Inter", "Helvetica Neue", "Helvetica",
+    Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: #666;
   margin-bottom: 10px;
+  letter-spacing: 0.2px;
 }
 
 /* category filter */
@@ -61,9 +85,15 @@ body {
 /* chat section */
 .chatbox {
   margin: 40px 0;
-  border: 2px solid #000;
-  border-radius: 8px;
-  padding: 26px;
+  /* Rounded container with drop shadow */
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+  /* Center-aligned container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .chatbox h2 {
@@ -72,67 +102,144 @@ body {
 }
 
 .chat-window {
-  padding: 20px;
-  font-size: 18px;
-  line-height: 1.5;
-  height: 250px;
+  width: 100%;
+  height: 400px;
+  border: none;
+  border-radius: 16px;
+  padding: 24px;
+  /* Helvetica Now Display for body text */
+  font-family: "Helvetica Now Display", "Inter", "Helvetica Neue", "Helvetica",
+    Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   overflow-y: auto;
   background: #fafafa;
-  margin-bottom: 20px;
+  /* Remove white-space: pre-line to use HTML formatting instead */
+  /* Subtle inner shadow */
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* placeholder message */
-.placeholder-message {
-  width: 100%;
-  text-align: center;
-  padding: 40px;
-  color: #666;
-  font-size: 18px;
+/* messages */
+.msg {
+  margin-bottom: 20px;
+  line-height: 1.7;
+  /* Helvetica Now Display for body text */
+  font-family: "Helvetica Now Display", "Inter", "Helvetica Neue", "Helvetica",
+    Arial, sans-serif;
+  padding: 12px 0;
+  /* Better spacing for readability */
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.msg.user {
+  color: #000;
+  font-weight: 500;
+  align-self: flex-start;
+}
+
+/* Typing cursor animation for AI messages */
+.msg.ai.typing::after {
+  content: "|";
+  animation: blink 1s infinite;
+  color: #333;
+}
+
+.msg.ai {
+  color: #555;
+  font-weight: 400;
+  /* Add smooth transition for typing effects */
+  transition: opacity 0.1s ease;
+  align-self: flex-end;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 /* input row */
 .chat-form {
   display: flex;
-  gap: 12px;
-  margin-top: 16px;
+  gap: 16px;
+  margin-top: 24px;
+  width: 100%;
+  align-items: center;
+  flex-direction: row;
 }
 
 .chat-form input {
   flex: 1;
-  padding: 12px;
-  font-size: 18px;
-  border: none;
-  border-bottom: 2px solid #ccc;
-  background: transparent;
+  padding: 0 20px;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  /* Helvetica Now Display for search fields */
+  font-family: "Helvetica Now Display", "Inter", "Helvetica Neue", "Helvetica",
+    Arial, sans-serif;
+  font-size: 16px;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  /* Subtle shadow */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  text-align: left;
 }
 
 .chat-form input:focus {
   outline: none;
-  border-bottom-color: #000;
+  border-color: #000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+.chat-form input::placeholder {
+  color: #999;
+  font-weight: 300;
+  text-align: left;
 }
 
 .chat-form button {
+  /* Halesworth eText for headers/menu */
+  font-family: "Halesworth eText", "Montserrat", Arial, sans-serif;
   font-size: 18px;
   background: #000;
   color: #fff;
   border: none;
-  padding: 12px;
-  width: 48px;
-  height: 48px;
+  border-radius: 12px;
+  padding: 16px;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.2s ease;
+  /* Premium button shadow */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+}
+
+.chat-form button .material-icons {
+  font-size: 24px;
 }
 
 .chat-form button:hover {
-  background: #666666;
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.24);
 }
 
 .chat-form button:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.24), 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.chat-form button:active {
+  transform: translateY(0);
 }
 
 /* visually hidden */
@@ -152,104 +259,485 @@ body {
 .site-footer {
   margin: 60px 0 40px;
   text-align: center;
+  /* Helvetica Now Display for body text */
+  font-family: "Helvetica Now Display", "Inter", "Helvetica Neue", "Helvetica",
+    Arial, sans-serif;
   font-size: 14px;
+  color: #888;
+  font-weight: 300;
+}
+
+/* Style for L'Oréal copyright link */
+.site-footer p a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.site-footer p a:hover {
   color: #666;
 }
 
 .site-footer nav {
-  margin-top: 12px;
+  margin-top: 16px;
 }
 
 .site-footer a {
-  margin: 0 8px;
+  margin: 0 12px;
   color: #000;
   text-decoration: none;
+  /* Halesworth eText for navigation/menu */
+  font-family: "Halesworth eText", "Montserrat", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: #666;
+}
+
+/* ===== MOBILE RESPONSIVE STYLES ===== */
+
+/* Tablet styles - screens smaller than 768px */
+@media (max-width: 768px) {
+  .page-wrapper {
+    width: 95%;
+    padding: 0 10px;
+  }
+
+  .site-header {
+    padding-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .logo {
+    height: 50px;
+    margin-bottom: 15px;
+  }
+
+  .site-title {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .site-subtitle {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  .chatbox {
+    margin: 30px 0;
+    padding: 24px;
+    border-radius: 16px;
+  }
+
+  .chat-window {
+    height: 350px;
+    padding: 20px;
+    font-size: 15px;
+  }
+
+  .chat-form {
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .chat-form input {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .chat-form button {
+    width: 50px;
+    height: 50px;
+    padding: 14px;
+  }
+
+  .site-footer {
+    margin: 40px 0 30px;
+  }
+
+  .site-footer nav {
+    margin-top: 12px;
+  }
+
+  .site-footer a {
+    margin: 0 8px;
+    font-size: 12px;
+  }
+
+  .products-grid {
+    gap: 20px;
+  }
+  .product-card {
+    padding: 16px;
+  }
+  .selected-products {
+    padding: 16px;
+  }
+}
+
+/* Mobile styles - screens smaller than 480px */
+@media (max-width: 480px) {
+  .page-wrapper {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  .site-header {
+    padding-top: 20px;
+    margin-bottom: 20px; /* Reduced from 25px */
+  }
+
+  .logo {
+    height: 40px; /* Reduced from 45px */
+    margin-bottom: 10px; /* Reduced from 12px */
+  }
+
+  .site-title {
+    font-size: 22px; /* Reduced from 24px */
+    margin-bottom: 6px; /* Reduced from 8px */
+    letter-spacing: -0.3px;
+  }
+
+  .site-subtitle {
+    font-size: 13px; /* Reduced from 14px */
+    padding: 0 15px;
+    line-height: 1.4;
+  }
+
+  .chatbox {
+    margin: 15px 0; /* Reduced from 20px 0 */
+    padding: 16px; /* Reduced from 20px */
+    border-radius: 12px;
+  }
+
+  .chat-window {
+    height: 250px; /* Reduced from 300px */
+    padding: 14px; /* Reduced from 16px */
+    font-size: 14px;
+    border-radius: 12px;
+  }
+
+  .msg {
+    margin-bottom: 12px; /* Reduced from 16px */
+    padding: 6px 0; /* Reduced from 8px 0 */
+    line-height: 1.5; /* Reduced from 1.6 */
+  }
+
+  .chat-form {
+    gap: 8px; /* Reduced from 10px */
+    margin-top: 12px; /* Reduced from 16px */
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .chat-form input {
+    padding: 14px; /* Reduced from 16px */
+    font-size: 16px; /* Prevent zoom on iOS */
+    border-radius: 10px;
+    margin-bottom: 6px; /* Reduced from 8px */
+  }
+
+  .chat-form button {
+    width: 100%;
+    height: 44px; /* Reduced from 48px */
+    border-radius: 10px;
+    justify-content: center;
+  }
+
+  .chat-form button .material-icons {
+    font-size: 18px; /* Reduced from 20px */
+  }
+
+  .site-footer {
+    margin: 20px 0 15px; /* Reduced from 30px 0 20px */
+    font-size: 11px; /* Reduced from 12px */
+  }
+
+  .site-footer nav {
+    margin-top: 8px; /* Reduced from 10px */
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Reduced from 8px */
+  }
+
+  .site-footer a {
+    margin: 0;
+    font-size: 10px; /* Reduced from 11px */
+    display: block;
+  }
+
+  /* Make copyright text smaller on mobile */
+  .site-footer p {
+    font-size: 10px; /* Reduced from 11px */
+    line-height: 1.4;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .product-card {
+    padding: 10px;
+  }
+  .selected-products {
+    padding: 10px;
+  }
+  #selectedProductsList {
+    gap: 8px;
+  }
+}
+
+/* Very small mobile styles - screens smaller than 320px */
+@media (max-width: 320px) {
+  .site-title {
+    font-size: 18px; /* Reduced from 20px */
+  }
+
+  .site-subtitle {
+    font-size: 12px; /* Reduced from 13px */
+  }
+
+  .chatbox {
+    padding: 12px; /* Reduced from 16px */
+    margin: 10px 0; /* Reduced from default */
+  }
+
+  .chat-window {
+    height: 200px; /* Reduced from 250px */
+    padding: 10px; /* Reduced from 12px */
+  }
+
+  .chat-form input {
+    padding: 12px; /* Reduced from 14px */
+  }
+
+  .chat-form button {
+    height: 40px; /* Reduced from 44px */
+  }
+
+  .site-footer {
+    margin: 15px 0 10px; /* Further reduced */
+  }
 }
 
 /* products grid */
 .products-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin: 30px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+  margin: 40px 0;
 }
 
+/* product card */
 .product-card {
-  flex: 0 1 calc(33.333% - 14px);
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 4px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 24px;
   display: flex;
-  gap: 15px;
-  min-height: 160px;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, background 0.3s, border-color 0.3s;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
 }
 
 .product-card img {
-  width: 110px;
-  height: 110px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
-  flex-shrink: 0;
-}
-
-.product-card .product-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 110px;
+  margin-bottom: 16px;
 }
 
 .product-card h3 {
-  font-size: 16px;
+  font-family: "Halesworth eText", "Montserrat", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
   margin-bottom: 8px;
+  color: #222;
+  text-align: center;
 }
 
 .product-card p {
-  font-size: 14px;
+  font-size: 15px;
   color: #666;
+  text-align: center;
+  margin-bottom: 12px;
 }
 
-/* selected products */
-.selected-products {
-  margin: 40px 0;
-  padding: 20px;
-  border: 2px solid #000;
+.product-card button {
+  font-family: "Halesworth eText", "Montserrat", Arial, sans-serif;
+  font-size: 15px;
+  background: #000;
+  color: #fff;
+  border: none;
   border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.product-card button:hover {
+  background: #333;
+}
+
+/* Visually highlight selected product cards in the grid */
+.product-card.selected {
+  border: 2px solid #e6b87a;
+  background: #fdf6e9;
+  box-shadow: 0 0 0 4px #f7e3c1;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+/* selected products list */
+.selected-products {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  margin: 40px 0;
 }
 
 .selected-products h2 {
+  font-family: "Halesworth eText", "Montserrat", Arial, sans-serif;
   font-size: 20px;
-  margin-bottom: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #222;
 }
 
 #selectedProductsList {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.selected-product-item {
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-size: 15px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.selected-product-item button {
+  background: none;
+  border: none;
+  color: #c00;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 4px;
 }
 
 .generate-btn {
-  width: 100%;
-  margin-top: 20px;
-  padding: 16px;
-  font-size: 18px;
-  font-weight: 500;
-  color: #fff;
+  font-family: "Halesworth eText", "Montserrat", Arial, sans-serif;
+  font-size: 16px;
   background: #000;
+  color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  padding: 12px 24px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .generate-btn:hover {
-  background: #666;
+  background: #333;
 }
 
-.generate-btn i {
-  margin-right: 8px;
+.clear-all-btn {
+  font-family: "Halesworth eText", "Montserrat", Arial, sans-serif;
+  font-size: 16px;
+  background: #e6b87a;
+  color: #222;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-left: 8px;
+}
+
+/* Product description expand/collapse */
+.product-desc {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  font-size: 15px;
+  font-family: "Helvetica Now Display", "Inter", "Helvetica Neue", "Helvetica",
+    Arial, sans-serif;
+  color: #444;
+  background: #fdf6e9;
+  border-radius: 8px;
+  margin-top: 8px;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.product-desc.expanded {
+  max-height: 200px;
+  opacity: 1;
+  padding: 12px 12px;
+}
+
+.desc-toggle-btn {
+  margin: 8px 0 0 0;
+  background: #e6b87a;
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-family: "Halesworth eText", "Montserrat", Arial, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.desc-toggle-btn:hover {
+  background: #f7e3c1;
+}
+
+/* Responsive styles for product grid and cards */
+@media (max-width: 768px) {
+  .products-grid {
+    gap: 20px;
+  }
+  .product-card {
+    padding: 16px;
+  }
+  .selected-products {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .product-card {
+    padding: 10px;
+  }
+  .selected-products {
+    padding: 10px;
+  }
+  #selectedProductsList {
+    gap: 8px;
+  }
 }
